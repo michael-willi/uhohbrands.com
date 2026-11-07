@@ -284,6 +284,16 @@ p:last-child { margin-bottom: 0; }
 }
 .bigmail:hover { background: var(--ink); color: var(--acid); border-bottom-color: var(--acid); }
 
+.social {
+  list-style: none; padding: 0; margin: 2.5rem 0 0;
+  display: flex; flex-wrap: wrap; gap: .75rem 2rem;
+}
+.social a {
+  font-weight: 700; font-size: 1.1rem; text-decoration: none;
+  border-bottom: 3px solid var(--ink); padding-bottom: 2px;
+}
+.social a:hover { background: var(--ink); color: var(--acid); border-bottom-color: var(--acid); }
+
 /* Footer */
 
 .foot {
@@ -291,7 +301,10 @@ p:last-child { margin-bottom: 0; }
   color: #fff;
   padding: clamp(2.5rem, 5vw, 4rem) var(--pad);
 }
-.foot-row { display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+.foot-row { display: flex; align-items: flex-start; gap: 2rem 3rem; flex-wrap: wrap; }
+.foot-social { margin: .25rem 0 0; margin-left: auto; }
+.foot-social a { color: #fff; border-bottom-color: var(--acid); font-size: 1rem; }
+.foot-social a:hover { background: var(--acid); color: var(--ink); border-bottom-color: var(--ink); }
 .foot-row p { margin: 0; line-height: 1.4; }
 .legal {
   margin-top: 2.5rem; max-width: 72ch;
