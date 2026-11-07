@@ -1,0 +1,296 @@
+/* Uh Oh Brands */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("assets/archivo-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --acid: #dae912;
+  --ink: #000;
+  --grey: #d7d7d7;
+  --paper: #fff;
+  --pad: clamp(1.25rem, 5vw, 5rem);
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--grey);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; }
+
+:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+.skip {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--ink); color: var(--acid);
+  padding: .5rem 1rem; text-decoration: none; z-index: 10;
+}
+.skip:focus { top: 1rem; }
+
+h1, h2, h3 {
+  font-stretch: 62%;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: .92;
+  letter-spacing: -.005em;
+  margin: 0;
+}
+
+h2 { font-size: clamp(2.75rem, 6vw, 5.25rem); }
+h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); }
+
+p { margin: 0 0 1.25em; }
+p:last-child { margin-bottom: 0; }
+
+/* Header */
+
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.25rem var(--pad);
+}
+
+.wordmark {
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  line-height: 1;
+}
+.wordmark.small { font-size: 2.5rem; color: var(--acid); }
+
+.top nav { display: flex; gap: clamp(1rem, 3vw, 2.5rem); }
+.top nav a {
+  font-weight: 600; text-decoration: none; font-size: 1rem;
+  border-bottom: 2px solid transparent; padding-bottom: 2px;
+}
+.top nav a:hover { border-bottom-color: var(--ink); }
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4rem);
+  padding: clamp(1rem, 4vw, 3rem) var(--pad) clamp(2rem, 6vw, 5rem);
+  min-height: calc(100vh - 5.5rem);
+}
+
+.hero h1 {
+  font-size: clamp(3.4rem, 7.6vw, 7.5rem);
+}
+.hero h1 span { display: block; }
+
+.lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  line-height: 1.4;
+  max-width: 40ch;
+  margin-top: 1.75rem;
+}
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; margin-top: 2rem; }
+
+.button {
+  display: inline-block;
+  background: var(--ink); color: var(--acid);
+  font-weight: 700; font-size: 1.05rem;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: background .15s ease, color .15s ease;
+}
+.button:hover { background: var(--acid); color: var(--ink); }
+
+.textlink {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.hero-art { position: relative; justify-self: center; width: min(100%, 520px); }
+
+.hero-art img {
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent),
+                      linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent),
+              linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+  mask-composite: intersect;
+}
+
+/* Holographic sticker */
+
+.sticker {
+  position: absolute;
+  left: -7%;
+  bottom: -1%;
+  width: clamp(120px, 28%, 160px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  background: conic-gradient(from 210deg, #ffd3ea, #cdefff, #e6d6ff, #d4ffdc, #fff2b3, #ffd3ea);
+  box-shadow: 0 0 0 5px #fff, 0 10px 24px rgba(0,0,0,.18);
+}
+.sticker svg { width: 100%; height: 100%; }
+.ring-text {
+  font-family: var(--font); font-weight: 800; font-stretch: 90%; font-size: 22px;
+  fill: var(--ink);
+  transform-origin: 100px 100px;
+  animation: spin 28s linear infinite;
+}
+.center-text {
+  font-family: var(--font); font-weight: 900; font-stretch: 110%; font-size: 36px;
+  letter-spacing: -.02em; fill: var(--ink);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Marquee band */
+
+.band {
+  background: var(--acid);
+  overflow: hidden;
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  padding: .55rem 0;
+}
+.band-track {
+  display: flex; width: max-content;
+  animation: slide 22s linear infinite;
+}
+.band-track span {
+  font-stretch: 62%; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(1.6rem, 3.6vw, 3rem); line-height: 1;
+  padding-right: 2.25rem;
+  white-space: nowrap;
+}
+.band-track span::after { content: "\25CF"; font-size: .4em; vertical-align: middle; margin-left: 2.25rem; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* What it is */
+
+.what {
+  background: var(--paper);
+  padding: clamp(3.5rem, 8vw, 7rem) var(--pad);
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.fact { border-top: 6px solid var(--ink); padding-top: 1.1rem; }
+.fact h3 { margin-bottom: .6rem; }
+.fact p { max-width: 36ch; }
+
+/* Why */
+
+.why {
+  background: var(--ink);
+  color: var(--acid);
+  padding: clamp(3.5rem, 8vw, 7rem) var(--pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+}
+.why h2 { max-width: 7ch; }
+.why-inner { max-width: 58ch; }
+.why p { font-size: clamp(1.2rem, 1.7vw, 1.5rem); line-height: 1.4; }
+
+/* Michael */
+
+.michael {
+  background: var(--grey);
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 7rem) var(--pad);
+}
+.portrait { margin: 0; }
+.portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 60%; }
+.portrait figcaption { font-size: .95rem; margin-top: .75rem; font-weight: 500; }
+.michael-copy h2 { margin-bottom: 1.5rem; }
+.michael-copy p { max-width: 56ch; font-size: clamp(1.05rem, 1.35vw, 1.25rem); }
+.sig { margin-top: 2rem; font-weight: 600; }
+.sig a { text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Contact */
+
+.contact {
+  background: var(--acid);
+  padding: clamp(3.5rem, 8vw, 7rem) var(--pad);
+}
+.contact p { max-width: 48ch; font-size: clamp(1.15rem, 1.6vw, 1.45rem); margin: 1.25rem 0 2rem; }
+.bigmail {
+  display: inline-block;
+  font-stretch: 62%; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(1.9rem, 5.5vw, 5rem); line-height: 1;
+  text-decoration: none;
+  border-bottom: .12em solid var(--ink);
+  padding-bottom: .05em;
+  word-break: break-all;
+}
+.bigmail:hover { background: var(--ink); color: var(--acid); border-bottom-color: var(--acid); }
+
+/* Footer */
+
+.foot {
+  background: var(--ink);
+  color: #fff;
+  padding: clamp(2.5rem, 5vw, 4rem) var(--pad);
+}
+.foot-row { display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+.foot-row p { margin: 0; line-height: 1.4; }
+.legal {
+  margin-top: 2.5rem; max-width: 72ch;
+  font-size: .85rem; line-height: 1.5; color: #a8a8a8;
+}
+
+/* Responsive */
+
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero h1 span { display: inline; }
+  .hero h1 { max-width: 12ch; }
+  .hero-art { width: min(100%, 440px); margin-top: 1.5rem; }
+  .sticker { left: -6%; bottom: -3%; width: 104px; }
+  .facts { grid-template-columns: 1fr; }
+  .why { grid-template-columns: 1fr; }
+  .why h2 { max-width: none; }
+  .michael { grid-template-columns: 1fr; }
+  .portrait { max-width: 520px; }
+}
+
+@media (max-width: 520px) {
+  .top { flex-wrap: wrap; gap: .75rem 1.25rem; }
+  .hero h1 { font-size: clamp(3rem, 15vw, 4rem); }
+  .actions .button { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ring-text { animation: none; }
+  .band-track { animation: none; }
+  .button { transition: none; }
+}
