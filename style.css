@@ -107,7 +107,38 @@ p:last-child { margin-bottom: 0; }
   margin-top: 1.75rem;
 }
 
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; margin-top: 2rem; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+.waitlist {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  margin-top: 2rem;
+  max-width: 34rem;
+}
+.waitlist input {
+  flex: 1 1 14rem;
+  font: inherit; font-size: 1.05rem;
+  padding: .95rem 1.1rem;
+  border: 3px solid var(--ink);
+  background: #fff; color: var(--ink);
+  border-radius: 0;
+  min-width: 0;
+}
+.waitlist input::placeholder { color: #777; }
+.waitlist input:focus { outline: none; box-shadow: 0 0 0 3px var(--acid); }
+.waitlist .button {
+  border: 3px solid var(--ink);
+  font: inherit; font-weight: 700; font-size: 1.05rem;
+  cursor: pointer;
+}
+.waitlist .button:disabled { opacity: .7; cursor: default; }
+.waitlist-note { flex-basis: 100%; font-size: .95rem; margin: .25rem 0 0; min-height: 1.4em; }
+.waitlist.is-done input, .waitlist.is-done .button { display: none; }
+.waitlist.is-done .waitlist-note { font-size: 1.15rem; font-weight: 600; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; margin-top: 1.5rem; }
 
 .button {
   display: inline-block;
@@ -285,7 +316,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 520px) {
   .top { flex-wrap: wrap; gap: .75rem 1.25rem; }
   .hero h1 { font-size: clamp(3rem, 15vw, 4rem); }
-  .actions .button { width: 100%; text-align: center; }
+  .waitlist .button { width: 100%; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {

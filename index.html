@@ -39,8 +39,14 @@
     <div class="hero-copy">
       <h1><span>Take this</span> <span>the moment</span> <span>a cold starts.</span></h1>
       <p class="lede">Uh Oh is a zinc cold remedy. Quick-dissolve cherry tablets, 30 to a box, made to be taken at the first sniffle. Not after three days of pretending it is allergies.</p>
+      <form class="waitlist" id="waitlist" action="https://docs.google.com/forms/d/e/1FAIpQLScdPUN-cTV3AKUwGAaJe4vlntS_15Vb4oLBsD8qh6lrckyK6Q/formResponse" method="POST" target="waitlist-sink" novalidate>
+        <label class="visually-hidden" for="wl-email">Email address</label>
+        <input id="wl-email" name="entry.160538507" type="email" placeholder="you@email.com" autocomplete="email" inputmode="email" required>
+        <button class="button" type="submit">Tell me when it drops</button>
+        <p class="waitlist-note" id="wl-note" aria-live="polite">No spam. One email when it's ready, maybe one before.</p>
+      </form>
+      <iframe name="waitlist-sink" title="hidden" hidden></iframe>
       <div class="actions">
-        <a class="button" href="mailto:michael@uhohbrands.com?subject=Tell%20me%20when%20Uh%20Oh%20drops">Email me when it drops</a>
         <a class="textlink" href="#michael">Why I made it</a>
       </div>
     </div>
@@ -126,6 +132,45 @@
   </div>
   <p class="legal">Uh Oh is a homeopathic zinc cold remedy. Claims are based on traditional homeopathic practice, not accepted medical evidence, and have not been evaluated by the FDA. Read the label and follow the directions on the box. &copy; 2026 Uh Oh Brands.</p>
 </footer>
+
+<script>
+(function () {
+  var form = document.getElementById('waitlist');
+  var input = document.getElementById('wl-email');
+  var note = document.getElementById('wl-note');
+  var button = form.querySelector('button');
+  var sink = document.querySelector('iframe[name="waitlist-sink"]');
+  var sent = false;
+
+  function done() {
+    if (!sent) return;
+    form.classList.add('is-done');
+    note.textContent = "You're on the list. I'll email you when it drops.";
+    input.value = '';
+    button.disabled = false;
+    button.textContent = 'Tell me when it drops';
+    sent = false;
+  }
+
+  form.addEventListener('submit', function (e) {
+    var value = input.value.trim();
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (!ok) {
+      e.preventDefault();
+      note.textContent = 'That email does not look right. Try again?';
+      input.focus();
+      return;
+    }
+    sent = true;
+    button.disabled = true;
+    button.textContent = 'Adding you';
+    note.textContent = '';
+    setTimeout(done, 4000);
+  });
+
+  sink.addEventListener('load', done);
+})();
+</script>
 
 </body>
 </html>
