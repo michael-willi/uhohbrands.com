@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://uhohzinc.com/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://uhohzinc.com/assets/uhoh-box.jpg</image:loc>
+      <image:title>Uh Oh Zinc box</image:title>
+      <image:caption>The yellow Uh Oh Zinc box. Zinc cold remedy, 30 quick-dissolve cherry tablets.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://uhohzinc.com/assets/michael-stoos.jpg</image:loc>
+      <image:title>Michael Willi, founder of Uh Oh Zinc</image:title>
+    </image:image>
+  </url>
+</urlset>

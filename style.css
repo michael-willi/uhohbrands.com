@@ -266,6 +266,22 @@ p:last-child { margin-bottom: 0; }
 .sig { margin-top: 2rem; font-weight: 600; }
 .sig a { text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
+/* Questions */
+
+.faq {
+  background: var(--paper);
+  padding: clamp(3.5rem, 8vw, 7rem) var(--pad);
+}
+.qa {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 5rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.q { border-top: 6px solid var(--ink); padding-top: 1rem; }
+.q h3 { font-size: clamp(1.5rem, 2.2vw, 1.9rem); margin-bottom: .6rem; }
+.q p { max-width: 52ch; }
+
 /* Contact */
 
 .contact {
@@ -320,6 +336,7 @@ p:last-child { margin-bottom: 0; }
   .hero-art { width: min(100%, 440px); margin-top: 1.5rem; }
   .sticker { left: -6%; bottom: -3%; width: 104px; }
   .facts { grid-template-columns: 1fr; }
+  .qa { grid-template-columns: 1fr; }
   .why { grid-template-columns: 1fr; }
   .why h2 { max-width: none; }
   .michael { grid-template-columns: 1fr; }
